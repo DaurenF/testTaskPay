@@ -1,0 +1,58 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: s1lk pay
+    environment: ${ENVIRONMENT:test}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 64MB
+      max-request-size: 64MB
+  jmx:
+    default-domain: s1lk pay
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5445/debug}
+    username: ${DB_USERNAME:debug}
+    password: ${DB_PASSWORD:debug}
+
+  liquibase:
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5445/debug}
+    user: ${DB_USERNAME:debug}
+    password: ${DB_PASSWORD:debug}
+    liquibase-schema: ${LIQUIBASE_SCHEMA:public}
+    change-log: classpath:/db.changelog/db.changelog-master.yaml
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        generate_statistics: false
+        default_schema: public
+
+jwt:
+  secret: ${JWT_SECRET:secret}
+
+stripe:
+  apikey: ${STRIPE_APIKEY:sk_test_51NTg3OHDlHZJVSFMu2xgiMNrVdjN1swQSaHaLzweghMEnDihRypiiZTCbCFAKCaj38E9xUdVXBxW5gv6ZX5yyOrS00KSL0X67P}
+  url: ${STRIPE_URL:https://api.stripe.com/v1}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  local_postgres_data: {}
+
+services:
+  postgres:
+    image: postgres:12
+    ports:
+      - "5445:5432"
+    environment: {
+      "POSTGRES_PASSWORD": "debug",
+      "POSTGRES_USER": "debug",
+      "POSTGRES_DB": "debug",
+    }
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+
+

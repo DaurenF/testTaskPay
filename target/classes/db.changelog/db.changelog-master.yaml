@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - include:
+      file: "2023/07/create-card-holder-table.xml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "2023/07/create-card-table.xml"
+      relativeToChangelogFile: true
