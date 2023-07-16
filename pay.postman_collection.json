@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "5e2845e3-42ce-4135-9414-a90ac96337fc",
+		"name": "pay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23950014"
+	},
+	"item": [
+		{
+			"name": "create card holder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Jenny Rosen\",\n    \"password\":\"dauren\",\n    \"email\": \"dauren.rosen@example.com\",\n    \"phone_number\": \"+18008675309\",\n    \"status\": \"active\",\n    \"type\": \"individual\",\n    \"individual\": {\n        \"first_name\": \"Jenny\",\n        \"last_name\": \"Rosen\",\n        \"dob\": {\n            \"day\": 1,\n            \"month\": 11,\n            \"year\": 1981\n        }\n    },\n    \"billing\": {\n        \"address\": {\n            \"line1\": \"123 Main Street\",\n            \"city\": \"San Francisco\",\n            \"state\": \"CA\",\n            \"postal_code\": \"94111\",\n            \"country\": \"IT\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/card/create/card-holder",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"card",
+						"create",
+						"card-holder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/card/healthcheck",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"card",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"dauren.rosen@example.com\",\n    \"password\":\"dauren\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/card/balance",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"card",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create card",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currency\": \"eur\",\n    \"type\": \"virtual\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/card/create?balance=1000",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"card",
+						"create"
+					],
+					"query": [
+						{
+							"key": "balance",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create transfer",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
